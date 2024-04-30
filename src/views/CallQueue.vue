@@ -2,10 +2,37 @@
   <div class="wrapper">
     <div class="box">
       <h4>Silahkan panggil nomor antrian dengan klik tombol dibawah</h4>
-      <button class="call-queue" @click="callQueue">Panggil Antrian</button>
-      <span v-if="queueNumber">
+      <button
+        class="call-queue"
+        @click="callQueue"
+        data-bs-toggle="modal"
+        data-bs-target="#queueModal"
+      >
+        Panggil Antrian
+      </button>
+      <!-- <span v-if="queueNumber">
         Nomor Antrian Dipanggil: {{ queueNumber }}
-      </span>
+      </span> -->
+    </div>
+
+    <div
+      class="modal fade"
+      id="queueModal"
+      tabindex="-1"
+      aria-labelledby="queueModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="modal-body d-flex flex-column align-items-center justify-content-center gap-5"
+          >
+            <span> Nomor Antrian:</span>
+            <span> {{ queueNumber }}</span>
+            <span>Loket A</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -87,5 +114,24 @@ h4 {
   font-size: 17px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content span:nth-child(2) {
+  color: green;
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.modal-content span:nth-child(1),
+.modal-content span:nth-child(3) {
+  font-size: 30px;
+  font-weight: 600;
 }
 </style>
